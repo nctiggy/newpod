@@ -1,0 +1,29 @@
+<%= form_for(@podhost) do |f| %>
+  <% if @podhost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@podhost.errors.count, "error") %> prohibited this podhost from being saved:</h2>
+
+      <ul>
+      <% @podhost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :host_name %><br>
+    <%= f.text_area :host_name %>
+  </div>
+  <div class="field">
+    <%= f.label :wwn_a %><br>
+    <%= f.text_area :wwn_a %>
+  </div>
+  <div class="field">
+    <%= f.label :wwn_b %><br>
+    <%= f.text_area :wwn_b %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Host name:</strong>
+  <%= @podhost.host_name %>
+</p>
+
+<p>
+  <strong>Wwn a:</strong>
+  <%= @podhost.wwn_a %>
+</p>
+
+<p>
+  <strong>Wwn b:</strong>
+  <%= @podhost.wwn_b %>
+</p>
+
+<%= link_to 'Edit', edit_podhost_path(@podhost) %> |
+<%= link_to 'Back', podhosts_path %>
