@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  host_name: MyText
+  wwn_a: MyText
+  wwn_b: MyText
+
+two:
+  host_name: MyText
+  wwn_a: MyText
+  wwn_b: MyText
