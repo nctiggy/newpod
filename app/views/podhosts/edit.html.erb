@@ -1,6 +1,5 @@
-<h1>Editing podhost</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @podhost %> |
-<%= link_to 'Back', podhosts_path %>
+<%- model_class = Podhost -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Podhost %></h1>
+</div>
+<%= render :partial => 'form' %>

@@ -1,29 +1,28 @@
-<%= form_for(@podhost) do |f| %>
-  <% if @podhost.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@podhost.errors.count, "error") %> prohibited this podhost from being saved:</h2>
-
-      <ul>
-      <% @podhost.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @podhost, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :host_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :host_name, :class => 'text-field form-control' %>
     </div>
-  <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :wwn_a, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :wwn_a, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :wwn_b, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :wwn_b, :class => 'text-field form-control' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :host_name %><br>
-    <%= f.text_area :host_name %>
-  </div>
-  <div class="field">
-    <%= f.label :wwn_a %><br>
-    <%= f.text_area :wwn_a %>
-  </div>
-  <div class="field">
-    <%= f.label :wwn_b %><br>
-    <%= f.text_area :wwn_b %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  podhosts_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

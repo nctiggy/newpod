@@ -1,29 +1,40 @@
-<h1>Listing podhosts</h1>
-
-<table>
+<%- model_class = Podhost -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Podhost %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Host name</th>
-      <th>Wwn a</th>
-      <th>Wwn b</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:host_name) %></th>
+      <th><%= model_class.human_attribute_name(:wwn_a) %></th>
+      <th><%= model_class.human_attribute_name(:wwn_b) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @podhosts.each do |podhost| %>
       <tr>
+        <td><%= podhost.id %></td>
         <td><%= podhost.host_name %></td>
         <td><%= podhost.wwn_a %></td>
         <td><%= podhost.wwn_b %></td>
-        <td><%= link_to 'Show', podhost %></td>
-        <td><%= link_to 'Edit', edit_podhost_path(podhost) %></td>
-        <td><%= link_to 'Destroy', podhost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l podhost.created_at, format: :long %></td>
+        <td>
+          <%= link_to podhost_path(podhost), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to podhost_path(podhost), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Podhost', new_podhost_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_podhost_path,
+            :class => 'btn btn-primary' %>
